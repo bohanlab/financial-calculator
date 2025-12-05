@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="katex/katex.min.css">
+<script src="katex/katex.min.js"></script>
+<script src="katex/contrib/auto-render.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body);
+  });
+</script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金融计算器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>金融计算器</h1>
+        
+        <form id="calculator-form">
+            <div class="input-group">
+                <label for="payment-timing">付款时间:</label>
+                <div class="input-container">
+                    <label>
+                        <input type="radio" id="type-end" name="payment-timing" value="0"> 期末
+                    </label>
+                    <label>
+                        <input type="radio" id="type-start" name="payment-timing" value="1" checked> 期初
+                    </label>
+                </div>
+            </div><br>
+
+            <div class="input-group">
+                <label for="present-value">现值 (PV):</label>
+                <div class="input-container">
+                    <input type="text" id="present-value" name="present-value" required pattern="^[0-9]+(\.[0-9]+)?$" oninput="validateInput(this)">
+                    <button type="button" class="solve-button" data-target="present-value">Solve</button>
+                </div>
+            </div><br>
+
+            <div class="input-group">
+                <label for="payment">每期的付款金额 (PMT):</label>
+                <div class="input-container">
+                    <input type="text" id="payment" name="payment" required pattern="^[0-9]+(\.[0-9]+)?$" oninput="validateInput(this)">
+                    <button type="button" class="solve-button" data-target="payment">Solve</button>
+                </div>
+            </div><br>
+
+            <div class="input-group">
+                <label for="future-value">终值 (FV):</label>
+                <div class="input-container">
+                    <input type="text" id="future-value" name="future-value" required pattern="^[0-9]+(\.[0-9]+)?$" oninput="validateInput(this)">
+                    <button type="button" class="solve-button" data-target="future-value">Solve</button>
+                </div>
+            </div><br>
+
+            <div class="input-group">
+                <label for="interest-rate">每期利率r (%):</label>
+                <div class="input-container">
+                    <input type="text" id="interest-rate" name="interest-rate" required pattern="^[0-9]+(\.[0-9]+)?$" oninput="validateInput(this)">
+                    <button type="button" class="solve-button" data-target="interest-rate">Solve</button>
+                </div>
+            </div><br>
+
+            <div class="input-group">
+                <label for="number-of-periods">期数 (n):</label>
+                <div class="input-container">
+                    <input type="text" id="number-of-periods" name="number-of-periods" required pattern="^[0-9]+(\.[0-9]+)?$" oninput="validateInput(this)">
+                    <button type="button" class="solve-button" data-target="number-of-periods">Solve</button>
+                </div>
+            </div><br>
+
+        </form>
+    </div>
+    <script src="script.js"></script>
+  
+<!-- 使用说明部分 -->
+<div class="instructions">
+    <h2>使用说明</h2>
+
+    <h3>步骤</h3>
+    <ol>
+        <li>在输入框中填写已知的数值。例如，如果你知道PV、PMT、r和n，但不知道FV，就把PV、PMT、r和n填上，把 FV 留空。</li>
+        <li>选择付款时间（<b>期末</b> 或 <b>期初</b>）。</li>
+        <li>点击要计算的字段右侧的 <b>Solve</b> 按钮，系统会自动计算结果。</li>
+    </ol>
+
+    <h3>各字段含义</h3>
+    <ul>
+        <li><b>现值 (PV)</b>：现在时点的价值，通常为借款金额或投资初始金额。</li>
+        <li><b>每期的付款金额 (PMT)</b>：每个周期需要支付或收到的金额（例如贷款月供）。</li>
+        <li><b>终值 (FV)</b>：期末的未来价值，例如贷款还清后余额、投资的到期金额。</li>
+        <li><b>每期利率r (%)</b>：每期的利率，单位为%。</li>
+        <li><b>期数 (n)</b>：总的付款期数，例如贷款的月数。</li>
+        <li><b>付款时间</b>：选择 <b>期末</b> 表示每期末付款，选择 <b>期初</b> 表示每期初付款。</li>
+    </ul>
+	
+	<h3>正负数约定</h3>
+<ul>
+    <li><b>现金流入</b>（你收到的现金，例如贷款本金、投资回报） → 输入为 <b>正数</b></li>
+    <li><b>现金流出</b>（你支付的现金，例如贷款还款、投资支出） → 输入为 <b>负数</b></li>
+	<li>例如，一笔 ￥10,000 的银行存款将用参数 -10000（如果你是存款人）和参数 10000（如果你是银行）来表示。</li>
+</ul>
+
+    <h3>公式</h3>
+    <p>
+\( PV \cdot (1 + r)^n + PMT \cdot (1 + r \cdot type) \cdot \frac{(1 + r)^n - 1}{r} + FV = 0 \)
+
+<p>其中：</p>
+<ul>
+    <li>\( r = \text{每期利率（年利率 ÷ 每年期数）} \)</li>
+    <li>\( n = \text{总期数} \)</li>
+    <li>\( PMT = \text{每期付款金额} \)</li>
+    <li>\( PV = \text{现值} \)</li>
+    <li>\( FV = \text{终值} \)</li>
+    <li>\( type = 0 \text{（期末付款）} \) 或 \( type = 1 \text{（期初付款）} \)</li>
+</ul>
+
+</div>
+
+
+
+</body>
+</html>
