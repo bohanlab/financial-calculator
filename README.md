@@ -1,4 +1,4 @@
-# Financial Calculator (金融计算器)
+# Financial Calculator (财务计算器)
 
 A web-based time value of money (TVM) calculator built with pure HTML, CSS, and JavaScript. This tool is designed to solve for any of the five core variables in financial analysis: Present Value (PV), Future Value (FV), Payment (PMT), Interest Rate (r), and Number of Periods (n).
 
