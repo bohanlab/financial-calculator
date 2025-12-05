@@ -15,8 +15,8 @@ Since this is a client-side web application, no complex installation is required
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/your-username/Financial-Calculator.git](https://github.com/your-username/Financial-Calculator.git)
-    cd Financial-Calculator
+    git clone [https://github.com/your-username/financial-calculator.git](https://github.com/your-username/financial-calculator.git)
+    cd financial-calculator
     ```
 2.  **Open the File:**
     * Locate and open the `financial-calculator.html` file in your preferred web browser (Chrome, Firefox, etc.).
