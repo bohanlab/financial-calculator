@@ -7,6 +7,9 @@ A web-based time value of money (TVM) calculator built with pure HTML, CSS, and 
 * **Solve for Any Variable:** Easily compute for PV, FV, PMT, Interest Rate, or Number of Periods when the other four variables are known.
 * **Payment Timing Selection:** Supports both **Annuity Due (Begining of Period)** and **Ordinary Annuity (End of Period)**.
 
+## Screenshots
+<img src="images/fc_preview.jpg" width="100%" alt="Portfolio Dashboard" />
+
 ## ⚙️ Installation and Usage
 
 Since this is a client-side web application, no complex installation is required.
