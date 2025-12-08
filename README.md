@@ -8,7 +8,7 @@ A web-based time value of money (TVM) calculator built with pure HTML, CSS, and 
 * **Payment Timing Selection:** Supports both **Annuity Due (Begining of Period)** and **Ordinary Annuity (End of Period)**.
 
 ## Screenshots
-<img src="images/financial-calculator-preview.jpg" width="100%" alt="Portfolio Dashboard" />
+<img src="images/financial-calculator-preview.jpg" width="50%" alt="Portfolio Dashboard" />
 
 ## ⚙️ Installation and Usage
 
